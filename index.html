@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>hbc by qdm12</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">hbc</h1>
+      <h2 class="project-tagline">Homomorphic binary circuits and operations using the library HElib</h2>
+      <a href="https://github.com/qdm12/Homomorphic-Encryption-API-with-HElib" class="btn">View on GitHub</a>
+      <a href="https://github.com/qdm12/Homomorphic-Encryption-API-with-HElib/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/qdm12/Homomorphic-Encryption-API-with-HElib/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <p>This project was developed as my Master final year project at Imperial College London.</p>
+
+<h2>
+<a id="what-is-it-in-one-line" class="anchor" href="#what-is-it-in-one-line" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>What is it in one line?</h2>
+
+<h3>
+<a id="it-is-an-api-of-binary-operations-such-as-binary-comparisons-or-binary-divisions-using-the-library-helib" class="anchor" href="#it-is-an-api-of-binary-operations-such-as-binary-comparisons-or-binary-divisions-using-the-library-helib" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>It is an API of binary operations such as binary comparisons or binary divisions using the library HElib.</h3>
+
+<h2>
+<a id="what-is-in-there" class="anchor" href="#what-is-in-there" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>What is in there?</h2>
+
+<p>The core API is in the file <em>he.cpp</em>, the main code is in <em>main.cpp</em>, some other classes are in <em>helper_functions.cpp</em> and the rest are unit tests and timing tests for the homomorphic binary operations implemented. </p>
+
+<h2>
+<a id="how-do-i-run-it" class="anchor" href="#how-do-i-run-it" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How do I run it?</h2>
+
+<p>You will need several libraries.
+You can either use the Makefile following the instructions in the <strong>Makefile</strong> section or do it manually.
+In both scenarios, you will need <strong>make</strong>.
+To do it manually:</p>
+
+<ol>
+<li>You should already have gcc-g++ or g++ installed.</li>
+<li>Install m4 <code>apt install m4</code>
+</li>
+<li>Install perl <code>apt install perl</code>
+</li>
+<li>Install gmp:
+\n\t* Download it <a href="https://gmplib.org/download/gmp/gmp-6.1.0.tar.bz2">here</a>
+
+<ul>
+<li>Extract it <code>tar xjf gmp-6.1.0.tar.bz2</code>
+</li>
+<li>Go to it directory <code>cd gmp-6.1.0</code>
+</li>
+<li>Configure it <code>./configure</code>
+</li>
+<li>Make it <code>make</code>
+</li>
+<li>Install it <code>make install</code>
+</li>
+<li>Optionally, check it <code>make check</code>
+</li>
+<li>
+<strong>For Cygwin</strong>, <code>cp -f /usr/local/lib/libgmp.* /usr/XXXXX-pc-cygwin/lib/</code> where XXXXX is your CPU architecture.</li>
+</ul>
+</li>
+<li>Install NTL:
+
+<ul>
+<li>Download it <a href="http://www.shoup.net/ntl/ntl-9.6.2.tar.gz">here</a>
+</li>
+<li>Extract it <code>tar xf ntl-9.6.2.tar.gz</code>
+</li>
+<li>Go to its source directory <code>cd ntl-9.6.2/src</code>
+</li>
+<li>Configure it <code>./configure NTL_GMP_LIP=on</code>
+</li>
+<li>Make it <code>make</code>
+</li>
+<li>Install it <code>make install</code>
+</li>
+</ul>
+</li>
+<li>Install HElib
+
+<ul>
+<li>Install git <code>apt install git</code>
+</li>
+<li>Clone it <code>git clone https://github.com/shaih/HElib.git</code>
+</li>
+<li>
+<strong>For Cygwin</strong>, do <code>sed -i -- 's/_B/_B_/g' HElib/src/Test_Replicate.cpp</code> or there will be a compile error.</li>
+<li>Go to its source directory <code>cd HElib/src</code>
+</li>
+<li>Make it <code>make</code>
+</li>
+<li>Check it <code>make check</code>
+</li>
+<li>Optionally test it <code>make test</code>
+</li>
+</ul>
+</li>
+<li>HElib is now ready to be used.</li>
+<li>Download and compile this project
+
+<ul>
+<li>Clone it <code>git https://github.com/qdm12/hbc.git ./hbc_git</code>
+</li>
+<li>Create a source folder <code>mkdir -p source</code> at the root (where you should be)</li>
+<li>Copy the source files <code>cp ./hbc_git/source/* ./source</code>
+</li>
+<li>You will then need to compile all the files into objects (or simply run <code>make HE</code> from the Makefile provided)
+
+<ul>
+<li>Create an <em>objects</em> folder <code>mkdir -p objects</code>
+</li>
+<li>Compile the API <code>g++ -c source/he.cpp -I HELib/src -o objects/he.o</code>
+</li>
+<li>Compile the helper functions <code>g++ -c source/helper_functions.cpp -o objects/helper_functions.o</code>
+</li>
+<li>Compile the various tests
+
+<ul>
+<li><code>g++ -c source/test_gates.cpp -I HELib/src -o objects/test_gates.o</code></li>
+<li><code>g++ -c source/test_circ_comb.cpp -I HELib/src -o objects/test_circ_comb.o</code></li>
+<li><code>g++ -c source/test_circ_seq.cpp -I HELib/src -o objects/test_circ_seq.o</code></li>
+<li><code>g++ -c source/test_circ_arithm.cpp -I HELib/src -o objects/test_circ_arithm.o</code></li>
+</ul>
+</li>
+<li>Compile the main.cpp source file <code>g++ -c source/main.cpp -I HELib/src -o objects/main.o</code>
+</li>
+<li>Compile the objects into HEapp <code>g++ objects/*.o HELib/src/fhe.a -o HEapp -L/usr/local/lib -lntl -lgmp -lm</code>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Run the program with ./HEapp &amp; Enjoy !</li>
+<li>Please refer to my long but complete report on this project, available <a href="www.google.com">here</a>
+</li>
+<li>You're welcome to contribute to this repository if you find any better circuits or other circuits and implement them !</li>
+</ol>
+
+<h2>
+<a id="using-the-makefile" class="anchor" href="#using-the-makefile" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Using the Makefile</h2>
+
+<p>blabla</p>
+
+<h2>
+<a id="abstract" class="anchor" href="#abstract" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Abstract</h2>
+
+<p>This project concerns the research and development of a real-use application of homomorphic encryption for cloud computing. The application takes advantage of the various possibilities and limitations of present homomorphic encryption schemes and programming libraries to remain usable in terms of time. The foundations of the application rely on the design of binary operations using homomorphic encryption. All the binary logic gates and various binary blocks were developed and adapted to provide enough functionalities to the application. The project focuses on providing features to cloud computing such as calculating averages on large amounts of encrypted numbers in a relatively short and decent time. The result is an application program interface written in C++ allowing to perform various operations on integers. It thus shows homomorphic encryption can be used today for simple operations if the security is more important than the speed of execution. </p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/qdm12/Homomorphic-Encryption-API-with-HElib">hbc</a> is maintained by <a href="https://github.com/qdm12">qdm12</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
