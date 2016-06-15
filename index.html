@@ -33,7 +33,13 @@
 <h2>
 <a id="what-is-in-there" class="anchor" href="#what-is-in-there" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>What is in there?</h2>
 
-<p>The core API is in the file <em>he.cpp</em>, the main code is in <em>main.cpp</em>, some other classes are in <em>helper_functions.cpp</em> and the rest are unit tests and timing tests for the homomorphic binary operations implemented. </p>
+<p>The core API is in the file <em>he.cpp</em>, the main code is in <em>main.cpp</em>, some other classes are in <em>helper_functions.cpp</em> and the rest are unit tests and timing tests for the homomorphic binary operations implemented. There is a Makefile to setup everything. My report is there to server as documentation for now.</p>
+
+<h2>
+<a id="what-does-it-run-" class="anchor" href="#what-does-it-run-" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>What does it run ?</h2>
+
+<p>By default, it runs a set of unit tests on all the circuits implemented (initiated from main.cpp).
+You can change the tests, or main.cpp or whatever and it should still work.</p>
 
 <h2>
 <a id="how-do-i-run-it" class="anchor" href="#how-do-i-run-it" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How do I run it?</h2>
@@ -41,7 +47,12 @@
 <p>You will need several libraries.
 You can either use the <em>Makefile</em> following the instructions in the <strong>Makefile</strong> section or do it manually.
 In both scenarios, you will need the module <strong>make</strong>.
-To do it manually:</p>
+The final executable file is HEapp in the root directory which can be run with <code>./HEapp</code>.</p>
+
+<h2>
+<a id="manual-setup" class="anchor" href="#manual-setup" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Manual Setup</h2>
+
+<p><em>This could be especially useful for Mac OSX where the Makefile may not work</em></p>
 
 <ol>
 <li>You should already have gcc-g++ or g++ installed.</li>
@@ -142,15 +153,62 @@ To do it manually:</p>
 </ul>
 </li>
 <li>Run the program with ./HEapp &amp; Enjoy !</li>
-<li>Please refer to my long but complete report on this project, available <a href="www.google.com">here</a>
-</li>
+<li>Please refer to my long but complete report on this project, available in the repository.</li>
 <li>You're welcome to contribute to this repository if you find any better circuits or other circuits and implement them !</li>
 </ol>
 
 <h2>
 <a id="using-the-makefile" class="anchor" href="#using-the-makefile" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Using the Makefile</h2>
 
-<p>XXX to do</p>
+<p><em>The makefile only supports Cygwin and Linux for instance, it has been untested on Mac OSX.</em></p>
+
+<h3>
+<a id="cygwin--windows" class="anchor" href="#cygwin--windows" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Cygwin &amp; Windows</h3>
+
+<p><strong>Due to permission restrictions on Windows operating systems</strong>, the following modules have to be installed manually before launching the makefile (by using the Cygwin installer):</p>
+
+<ul>
+<li>git</li>
+<li>gcc-g++</li>
+</ul>
+
+<p>When the makefile is launched, note that the following modules will be installed:</p>
+
+<ul>
+<li>apt-cyg</li>
+<li>curl</li>
+<li>m4</li>
+<li>perl</li>
+</ul>
+
+<p>For installing the project the first time, the Makefile works without the other source codes.
+Just move the Makefile in an empty directory and <code>cd</code> to it.
+1. To download, compile and install HElib and other libraries: <code>make HElib</code>
+2. To download, compile and run the project code: <code>make project</code>
+3. To re-compile the project <em>source</em> directory with your modifications: <code>make HE</code>
+4. You can try <code>make help</code> for more information
+<strong>NOTE:</strong> The project source code is now in the <em>./source</em> directory, and the GitHub repository is in <strong>./hbc_git</strong>.</p>
+
+<h3>
+<a id="linux" class="anchor" href="#linux" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Linux</h3>
+
+<p>When the makefile is launched, note that the following modules will be installed:</p>
+
+<ul>
+<li>git</li>
+<li>g++</li>
+<li>curl</li>
+<li>m4</li>
+<li>perl</li>
+</ul>
+
+<p>For installing the project the first time, the Makefile works without the other source codes.
+Just move the Makefile in an empty directory and <code>cd</code> to it.
+1. To download, compile and install HElib and other libraries: <code>make HElib</code>
+2. To download, compile and run the project code: <code>make project</code>
+3. To re-compile the project <em>source</em> directory with your modifications and run HEapp: <code>make HE</code>
+4. You can try <code>make help</code> for more information.
+<strong>NOTE:</strong> The project source code is now in the <em>./source</em> directory, and the GitHub repository is in <strong>./hbc_git</strong>.</p>
 
 <h2>
 <a id="abstract" class="anchor" href="#abstract" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Abstract</h2>
