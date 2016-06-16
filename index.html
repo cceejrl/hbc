@@ -83,9 +83,10 @@ Just move the Makefile in an empty directory and <code>cd</code> to it.</p>
 </li>
 <li>To re-compile the project <em>source</em> directory with your modifications: <code>make HE</code>
 </li>
-<li>You can try <code>make help</code> for more information
-<strong>NOTE:</strong> The project source code is now in the <em>./source</em> directory, and the GitHub repository is in <strong>./hbc_git</strong>.</li>
+<li>You can try <code>make help</code> for more information</li>
 </ol>
+
+<p><strong>NOTE:</strong> The project source code is now in the <em>./source</em> directory, and the GitHub repository is in <strong>./hbc_git</strong>.</p>
 
 <h3>
 <a id="linux" class="anchor" href="#linux" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Linux</h3>
@@ -110,9 +111,10 @@ Just move the Makefile in an empty directory and <code>cd</code> to it.</p>
 </li>
 <li>To re-compile the project <em>source</em> directory with your modifications and run HEapp: <code>make HE</code>
 </li>
-<li>You can try <code>make help</code> for more information.
-<strong>NOTE:</strong> The project source code is now in the <em>./source</em> directory, and the GitHub repository is in <strong>./hbc_git</strong>.</li>
+<li>You can try <code>make help</code> for more information.</li>
 </ol>
+
+<p><strong>NOTE:</strong> The project source code is now in the <em>./source</em> directory, and the GitHub repository is in <strong>./hbc_git</strong>.</p>
 
 <h2>
 <a id="manual-setup" class="anchor" href="#manual-setup" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Manual Setup</h2>
@@ -144,6 +146,8 @@ Just move the Makefile in an empty directory and <code>cd</code> to it.</p>
 </li>
 <li>
 <strong>For Cygwin</strong>, <code>cp -f /usr/local/lib/libgmp.* /usr/XXXXX-pc-cygwin/lib/</code> where XXXXX is your CPU architecture.</li>
+<li>Go back to main directory <code>cd ..</code>
+</li>
 </ul>
 </li>
 <li>Install NTL:
@@ -160,6 +164,8 @@ Just move the Makefile in an empty directory and <code>cd</code> to it.</p>
 <li>Make it <code>make</code>
 </li>
 <li>Install it <code>make install</code>
+</li>
+<li>Go back to main directory <code>cd ..</code>
 </li>
 </ul>
 </li>
@@ -180,6 +186,8 @@ Just move the Makefile in an empty directory and <code>cd</code> to it.</p>
 </li>
 <li>Optionally test it <code>make test</code>
 </li>
+<li>Go back to main directory <code>cd ..</code>
+</li>
 </ul>
 </li>
 <li>HElib is now ready to be used.</li>
@@ -189,29 +197,29 @@ Just move the Makefile in an empty directory and <code>cd</code> to it.</p>
 <li>Clone it <code>git https://github.com/qdm12/hbc.git ./hbc_git</code>
 </li>
 <li>Create a source folder <code>mkdir -p source</code> at the root (where you should be)</li>
-<li>Copy the source files <code>cp ./hbc_git/source/* ./source</code>
+<li>Copy the source files <code>cp ./hbc_git/* ./source</code>
 </li>
 <li>You will then need to compile all the files into objects (or simply run <code>make HE</code> from the Makefile provided)
 
 <ul>
 <li>Create an <em>objects</em> folder <code>mkdir -p objects</code>
 </li>
-<li>Compile the API <code>g++ -c source/he.cpp -I HELib/src -o objects/he.o</code>
+<li>Compile the API <code>g++ -c source/he.cpp -I HElib/src -o objects/he.o</code>
 </li>
 <li>Compile the helper functions <code>g++ -c source/helper_functions.cpp -o objects/helper_functions.o</code>
 </li>
 <li>Compile the various tests
 
 <ul>
-<li><code>g++ -c source/test_gates.cpp -I HELib/src -o objects/test_gates.o</code></li>
-<li><code>g++ -c source/test_circ_comb.cpp -I HELib/src -o objects/test_circ_comb.o</code></li>
-<li><code>g++ -c source/test_circ_seq.cpp -I HELib/src -o objects/test_circ_seq.o</code></li>
-<li><code>g++ -c source/test_circ_arithm.cpp -I HELib/src -o objects/test_circ_arithm.o</code></li>
+<li><code>g++ -c source/test_gates.cpp -I HElib/src -o objects/test_gates.o</code></li>
+<li><code>g++ -c source/test_circ_comb.cpp -I HElib/src -o objects/test_circ_comb.o</code></li>
+<li><code>g++ -c source/test_circ_seq.cpp -I HElib/src -o objects/test_circ_seq.o</code></li>
+<li><code>g++ -c source/test_circ_arithm.cpp -I HElib/src -o objects/test_circ_arithm.o</code></li>
 </ul>
 </li>
-<li>Compile the main.cpp source file <code>g++ -c source/main.cpp -I HELib/src -o objects/main.o</code>
+<li>Compile the main.cpp source file <code>g++ -c source/main.cpp -I HElib/src -o objects/main.o</code>
 </li>
-<li>Compile the objects into HEapp <code>g++ objects/*.o HELib/src/fhe.a -o HEapp -L/usr/local/lib -lntl -lgmp -lm</code>
+<li>Compile the objects into HEapp <code>g++ objects/*.o HElib/src/fhe.a -o HEapp -L/usr/local/lib -lntl -lgmp -lm</code>
 </li>
 </ul>
 </li>
@@ -221,6 +229,8 @@ Just move the Makefile in an empty directory and <code>cd</code> to it.</p>
 <li>Please refer to my long but complete report on this project, available in the repository.</li>
 <li>You're welcome to contribute to this repository if you find any better circuits or other circuits and implement them !</li>
 </ol>
+
+<hr>
 
 <h2>
 <a id="abstract" class="anchor" href="#abstract" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Abstract</h2>
