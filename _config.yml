@@ -1,0 +1,8 @@
+title: hbc
+description: Homomorphic binary circuits and operations using the library HElib
+google_analytics: 
+show_downloads: true
+theme: jekyll-theme-cayman
+
+gems:
+  - jekyll-mentions
